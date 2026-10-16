@@ -21,3 +21,10 @@ tasks:
     dir: ./app
     cmds:
       - ./gradlew :desktopApp:run
+
+  consigna:
+    desc: "Genera el PDF de la consigna de la actividad con Quarto"
+    dir: ./assigment
+    cmds:
+      - quarto render consigna.qmd --quiet
+

@@ -1,0 +1,66 @@
+---
+# Información del curso
+school: "Software"
+course-code: "BISOFT-38"
+course-name: "Proyecto de Ing. de Software 4"
+tsection: "SCV2"
+period: "Q02"
+instructor: "M.Sc. Kevin A. Hernández Rostrán"
+
+# 1. Datos generales de la actividad
+activity-title: "Práctica 01: Físicas 2D, Proyectiles y Combate"
+activity-type: "Práctica"
+due-date: "Según lo indicado en la plataforma"
+percentage: "7.5%"
+tformat: "PDF"
+total-points: "100"
+individual: true
+group: false
+show-instructions-note: false
+
+# 2. Instrucciones generales
+general-instructions: |
+  1. Lea cuidadosamente las instrucciones de la actividad; en caso de tener alguna duda, puede consultar con el docente.
+  2. Esta actividad se desarrolla de manera individual. Cualquier intento de plagio será sancionado de acuerdo con el reglamento académico vigente.
+  3. Al completar la actividad, debe subir el documento entregable en la plataforma virtual en formato **PDF**, dentro del tiempo y espacio indicados por el docente.
+
+# 3. Objetivos
+general-objective: "Construir el motor de físicas 2D, detección de colisiones y sistema de combate balístico para el videojuego Norman The Necromancer utilizando Kotlin Multiplatform y KorGE."
+specific-objectives: |
+  - Implementar máscaras de bits (Bitmasks) con operadores binarios para filtrar colisiones de forma eficiente.
+  - Programar la detección geométrica de colisiones rectangulares (AABB) y el cálculo de vectores angulares de apuntado.
+  - Desarrollar un bucle de simulación física 2D por integración de Euler con gravedad, masa, rebotes y fricción.
+  - Integrar el lanzamiento de proyectiles balísticos en parábola y la aplicación de daño al impactar enemigos.
+
+# 4. Descripción de la actividad
+activity-context: "En esta práctica guiada construirá paso a paso el motor de físicas 2D, filtrado de colisiones y combate balístico para Norman The Necromancer, validando cada etapa mediante pruebas unitarias automatizadas y GitHub Actions."
+activity-instructions: |
+  1. Ingrese al repositorio plantilla de la actividad en GitHub (https://github.com/kevinah95/l07-actividad-fisicas-combate) y utilice el botón **"Copiar ejercicio"** (*Use this template*) para crear su propio repositorio.
+  2. Espere unos segundos a que GitHub Actions cree automáticamente el **Issue** con las instrucciones de la práctica en su repositorio y siga los pasos indicados hasta completar las 4 etapas:
+     - **Paso 1:** Máscaras de Bits (*Bitmasks*) y Filtrado de Colisiones (`Tags.kt` y `GameObject.kt`).
+     - **Paso 2:** Geometría y Detección de Colisiones AABB (`Geometry.kt`).
+     - **Paso 3:** Físicas 2D, Gravedad y Rebote (`Game.kt`).
+     - **Paso 4:** Hechizos Balísticos y Sistema de Daño (`Entities.kt` y `Game.kt`).
+  3. Valide su código localmente con `./gradlew :shared:jvmTest` (o `task test`) y suba sus cambios (`git push origin main`) en cada paso para que el flujo de trabajo desbloquee el siguiente paso hasta finalizar la actividad.
+  4. Ejecute la demostración interactiva de escritorio con `./gradlew :desktopApp:run` (o `task desktop`) para comprobar el funcionamiento visual del sistema de físicas y combate.
+  5. Elabore y entregue un documento en formato **PDF** que incluya:
+     - El **enlace al repositorio de GitHub** donde desarrolló la actividad.
+     - Una **imagen (captura de pantalla) de prueba** que demuestre que completó exitosamente todos los pasos de la actividad (por ejemplo, el Issue finalizado en GitHub / GitHub Actions en verde o la ejecución de la demostración interactiva).
+
+# 5. Rúbrica
+rubric-criteria:
+  - criteria: "Cumplimiento de los pasos de la actividad en el repositorio"
+    deficient: "No realiza los pasos de la actividad o el repositorio no contiene las implementaciones solicitadas."
+    regular: "Completa parcialmente la actividad (1 o 2 pasos superados en las pruebas automatizadas)."
+    good: "Completa la mayoría de la actividad (3 pasos superados), pero presenta fallos menores en el último paso."
+    excellent: "Completa correctamente los 4 pasos de la actividad y todas las pruebas unitarias y de GitHub Actions finalizan con éxito."
+  - criteria: "Documento PDF entregable y evidencia de finalización"
+    deficient: "No entrega el documento en formato PDF o no incluye ni el enlace al repositorio ni la imagen de prueba."
+    regular: "Entrega el documento PDF, pero omite el enlace funcional al repositorio o la imagen de prueba."
+    good: "Entrega el PDF con el enlace al repositorio y la imagen de prueba, pero la captura es poco legible o no evidencia claramente la finalización."
+    excellent: "Entrega el documento en formato PDF incluyendo el enlace funcional al repositorio y una imagen clara que comprueba que completó la actividad."
+
+format:
+  assigment-typst:
+    keep-typ: false
+---

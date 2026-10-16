@@ -6,3 +6,5 @@ build/
 .kotlin/
 local.properties
 .DS_Store
+.quarto/
+

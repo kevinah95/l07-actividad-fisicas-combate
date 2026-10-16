@@ -1,0 +1,25 @@
+# Quarto build files
+.quarto/
+
+# Generated PDF outputs
+*.pdf
+
+# Generated Typst files (only in root, not in _extensions)
+/template.typ
+
+# Copied image resources during build (only in root)
+/footer.png
+/header.png
+/logo.png
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+*~
