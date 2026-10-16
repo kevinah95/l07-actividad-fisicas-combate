@@ -4,7 +4,7 @@ school: "Software"
 course-code: "BISOFT-38"
 course-name: "Proyecto de Ing. de Software 4"
 tsection: "SCV2"
-period: "Q02"
+period: "Q03"
 instructor: "M.Sc. Kevin A. Hernández Rostrán"
 
 # 1. Datos generales de la actividad
