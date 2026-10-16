@@ -10,7 +10,7 @@ jobs:
     name: Crear issue de ejercicio
     runs-on: ubuntu-latest
     if: |
-      !contains(github.event.head_commit.message, 'paso-')
+      !github.event.repository.is_template && !contains(github.event.head_commit.message, 'paso-')
     permissions:
       issues: write
       contents: read
@@ -38,12 +38,39 @@ jobs:
           ISSUE_COUNT=$(gh issue list --label "ejercicio" --state open --json number | jq length)
           echo "issue_count=$ISSUE_COUNT" >> "$GITHUB_OUTPUT"
 
+      - name: Obtener repositorio plantilla
+        if: steps.check_issue.outputs.issue_count == '0'
+        id: get-template-repo
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: repo } = await github.rest.repos.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            if (repo.template_repository) {
+              const issueReportUrl = `https://github.com/${repo.template_repository.full_name}/issues`;
+              core.setOutput('ISSUE_REPORT_URL', issueReportUrl);
+            }
+
+      - name: Construir mensaje de bienvenida desde plantilla
+        if: steps.check_issue.outputs.issue_count == '0'
+        id: build-issue-description
+        uses: skills/action-text-variables@v4
+        with:
+          template-file: .github/step-feedback/welcome.md
+          template-vars: |
+            title: "Práctica 07: Físicas 2D, Proyectiles y Combate"
+            login: ${{ github.actor }}
+            intro_message: "En esta práctica aprenderás a construir el motor de físicas 2D, máscaras de bits, colisiones AABB y proyectiles para **Norman The Necromancer** en Kotlin Multiplatform."
+            bug_report_url: ${{ steps.get-template-repo.outputs.ISSUE_REPORT_URL || '' }}
+
       - name: Crear issue con el Paso 1
         if: steps.check_issue.outputs.issue_count == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WELCOME_CONTENT: ${{ steps.build-issue-description.outputs.updated-text }}
         run: |
-          WELCOME_CONTENT=$(cat .github/step-feedback/welcome.md)
           STEP1_CONTENT=$(cat .github/steps/1-step.md)
           gh issue create \
             --title "Práctica 07: Físicas 2D, Proyectiles y Combate — Ejercicio Paso a Paso" \

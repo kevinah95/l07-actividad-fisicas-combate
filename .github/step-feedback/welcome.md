@@ -19,3 +19,7 @@ A medida que completes cada paso, dejaré actualizaciones y comentarios en este 
 ¡Comencemos, mucho éxito y a divertirse programando!
 
 <sub>— Mona</sub>
+
+{%- if bug_report_url %}
+> <sub>Si encuentras algún problema durante el ejercicio, por favor repórtalo [aquí]({{ bug_report_url }}).</sub>
+{%- endif %}
